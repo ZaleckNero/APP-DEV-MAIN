@@ -1,0 +1,76 @@
+-- Create Products Table
+CREATE TABLE Products (
+    ProductID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ProductName TEXT NOT NULL,
+    Category TEXT,
+    Price DECIMAL(10, 2) NOT NULL,
+    StockQuantity INTEGER NOT NULL,
+    Description TEXT
+);
+
+-- Create Customers Table
+CREATE TABLE Customers (
+    CustomerID INTEGER PRIMARY KEY AUTOINCREMENT,
+    FirstName TEXT NOT NULL,
+    LastName TEXT NOT NULL,
+    Email TEXT UNIQUE,
+    Phone TEXT,
+    Address TEXT
+);
+
+-- Create Sales Table
+CREATE TABLE Sales (
+    SaleID INTEGER PRIMARY KEY AUTOINCREMENT,
+    SaleDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CustomerID INTEGER,
+    TotalAmount DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+-- Create SalesDetails Table
+CREATE TABLE SalesDetails (
+    SaleDetailID INTEGER PRIMARY KEY AUTOINCREMENT,
+    SaleID INTEGER,
+    ProductID INTEGER,
+    Quantity INTEGER NOT NULL,
+    UnitPrice DECIMAL(10, 2) NOT NULL,
+    SubTotal DECIMAL(10, 2) AS (Quantity * UnitPrice) STORED,
+    FOREIGN KEY (SaleID) REFERENCES Sales(SaleID),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+-- Create InventoryMovements Table
+CREATE TABLE InventoryMovements (
+    MovementID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ProductID INTEGER,
+    MovementDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+    Quantity INTEGER NOT NULL,
+    MovementType TEXT, -- e.g., 'purchase', 'restock'
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+-- Insert sample data into Products
+INSERT INTO Products (ProductName, Category, Price, StockQuantity, Description)
+VALUES 
+    ('Laptop', 'Electronics', 1200.00, 10, 'High-performance laptop'),
+    ('Phone', 'Electronics', 800.00, 15, 'Latest smartphone model'),
+    ('Desk Chair', 'Furniture', 150.00, 20, 'Comfortable ergonomic chair');
+
+-- Insert sample data into Customers
+INSERT INTO Customers (FirstName, LastName, Email, Phone, Address)
+VALUES
+    ('John', 'Doe', 'johndoe@example.com', '1234567890', '123 Main St, Cityville'),
+    ('Jane', 'Smith', 'janesmith@example.com', '9876543210', '456 Elm St, Townsville');
+
+-- Insert sample data into Sales
+INSERT INTO Sales (CustomerID, TotalAmount)
+VALUES
+    (1, 2000.00),
+    (2, 950.00);
+
+-- Insert sample data into SalesDetails (sales line items)
+INSERT INTO SalesDetails (SaleID, ProductID, Quantity, UnitPrice)
+VALUES
+    (1, 1, 1, 1200.00),  -- Sale 1: Laptop
+    (1, 2, 1, 800.00),   -- Sale 1: Phone
+    (2, 3, 2, 150.00);   -- Sale 2: 2 Desk Chairs
