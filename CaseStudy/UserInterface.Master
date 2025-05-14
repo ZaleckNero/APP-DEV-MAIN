@@ -8,12 +8,57 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body style="background-color: #b4b4b4; margin: 0; padding: 0;">
     <form id="form1" runat="server">
+
+
+
         <div>
+
+            <asp:Panel ID="Panel1" runat="server" BackColor="#FF99FF" Height="160px"
+            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    
+            <asp:Label ID="Label1" runat="server" Text="WASHOP" 
+            Style="font-size:55px; display:block; text-shadow: 0 0 10px white;" ForeColor="White" />
+
+            <div style="display: flex; align-items: center; justify-content: flex-start;">
+            <asp:Label ID="Label2" runat="server" Text="Home Page" 
+            Style="font-size:25px; display:block; text-shadow: 0 0 10px white;" 
+            ForeColor="#333300" />
+            <img src="~/ICONS/HouseIcon.png" alt="Home Icon" style="width: 30px; height: 30px; margin-left: 10px;" />
+            </div>
+
+
+
+
+            </asp:Panel>
+
+            <asp:Panel ID="Panel2" runat="server" BackColor="#ffa500" Height="52px"
+            Style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+
+            <asp:Button ID="Button1" runat="server" Text="Manage profile" 
+            Style="background-color: transparent; border: none; color: black; font-size: 16px; width: 120px; height: 40px; transition: text-shadow 0.3s ease;"
+            onmouseover="this.style.textShadow='0 0 19px white'; this.style.cursor='pointer';"
+            onmouseout="this.style.textShadow='none';" OnClick="Button1_Click" />
+
+            <asp:Button ID="Button2" runat="server" Text="Orders" 
+            Style="background-color: transparent; border: none; color: black; font-size: 16px; width: 90px; height: 40px; transition: text-shadow 0.3s ease;"
+            onmouseover="this.style.textShadow='0 0 19px white'; this.style.cursor='pointer';"
+            onmouseout="this.style.textShadow='none';" OnClick="Button2_Click" />
+
+            <asp:Button ID="Button3" runat="server" Text="Market catalog" 
+            Style="background-color: transparent; border: none; color: black; font-size: 16px; width: 120px; height: 40px; transition: text-shadow 0.3s ease;"
+            onmouseover="this.style.textShadow='0 0 19px white'; this.style.cursor='pointer';"
+            onmouseout="this.style.textShadow='none';" OnClick="Button3_Click" />
+
+            </asp:Panel>
+
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
+
         </div>
+
+
     </form>
 </body>
 </html>
