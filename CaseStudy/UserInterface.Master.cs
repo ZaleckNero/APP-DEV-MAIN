@@ -13,5 +13,20 @@ namespace CaseStudy
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UserProfileManager.aspx");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UserOrderHistory.aspx");
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UserMarketPage.aspx");
+        }
     }
 }
