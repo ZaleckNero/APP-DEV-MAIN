@@ -11,7 +11,16 @@ namespace CaseStudy
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
+
+        
+        
+
+        protected void gvMarket_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            // working handler
+        }
+
     }
 }

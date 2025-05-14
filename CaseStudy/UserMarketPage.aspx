@@ -2,7 +2,10 @@
  
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     </asp:Content>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <style>
         .market-header {
             text-align: center;
@@ -54,8 +57,7 @@
 
     <asp:Label ID="lblMessage" runat="server" CssClass="message" />
 
-    <asp:GridView ID="gvMarket" runat="server" AutoGenerateColumns="False" OnRowCommand="gvMarket_RowCommand" CssClass="market-grid">
-        <Columns>
+    <asp:GridView ID="gvMarket" runat="server" AutoGenerateColumns="False" OnRowCommand="gvMarket_RowCommand" CssClass="market-grid">        <Columns>
             <asp:BoundField DataField="ProductName" HeaderText="PRODUCT NAME" />
             <asp:TemplateField HeaderText="VIEW">
                 <ItemTemplate>
@@ -69,4 +71,5 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+
 </asp:Content>
